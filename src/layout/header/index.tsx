@@ -6,7 +6,7 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { classNames } from "./utils";
 
 import Right from "./right";
-import { menus, linksApp, links } from "../../links";
+import { menus, linksApp } from "../../links";
 
 const navigation = menus.map((menu) => {
   return { name: menu.name, href: menu.link, current: false };
@@ -33,20 +33,6 @@ export default function Example() {
                 </Disclosure.Button>
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex-shrink-0 flex items-center">
-                  <Link to={links.landing.link}>
-                    <img
-                      className="block lg:hidden h-8 w-auto"
-                      src="/assets/img/workflow-mark-indigo-500.svg"
-                      alt="Workflow"
-                    />
-                    <img
-                      className="hidden lg:block h-8 w-auto"
-                      src="/assets/img/workflow-logo-indigo-500-mark-white-text.svg"
-                      alt="Workflow"
-                    />
-                  </Link>
-                </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (

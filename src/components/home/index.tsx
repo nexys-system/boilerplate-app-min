@@ -19,7 +19,6 @@ export default () => (
           aria-hidden="true"
         />
       </a>
-      &nbsp;available under MIT license. Contributions are welcome.
     </p>
   </>
 );

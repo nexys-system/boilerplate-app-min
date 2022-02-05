@@ -23,7 +23,6 @@ import Spinner from "../spinner/circle";
 interface Login {
   email: string;
   password: string;
-  rememberMe?: boolean;
 }
 
 const loginShape: V.Type.Shape = {
@@ -98,8 +97,8 @@ export default ({
             {errors && (
               <div className="p-2 flex items-center justify-between bg-red-200 rounded text-gray-600">
                 <ul>
-                  {errors.map((error) => (
-                    <li>{error}</li>
+                  {errors.map((error, i) => (
+                    <li key={i}>{error}</li>
                   ))}
                 </ul>
               </div>
@@ -117,7 +116,7 @@ export default ({
                   required
                   className={classInput}
                   placeholder="Email address"
-                  value={login.email}
+                  value={login.email || ""}
                   onChange={(v) => handleChange(v, "email")}
                 />
               </div>
@@ -134,34 +133,8 @@ export default ({
                   className={classInput.replace("-t-", "-b-")}
                   placeholder="Password"
                   onChange={(v) => handleChange(v, "password")}
-                  value={login.password}
+                  value={login.password || ""}
                 />
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                />
-                <label
-                  htmlFor="remember-me"
-                  className="ml-2 block text-sm text-gray-900"
-                >
-                  Remember me
-                </label>
-              </div>
-
-              <div className="text-sm">
-                <a
-                  href="#"
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
-                >
-                  Forgot your password?
-                </a>
               </div>
             </div>
 
