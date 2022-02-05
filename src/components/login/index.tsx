@@ -1,7 +1,7 @@
 import React from "react";
 
 import LoginComponent, { Login } from "../../common/login";
-import { withBackend } from "../../config";
+import { version, withBackend } from "../../config";
 import { linksApp } from "../../links";
 
 const Extra = () => (
@@ -29,4 +29,11 @@ const onSubmit = async (login: Login) => {
   return { redirectUrl: linksApp.home.link };
 };
 
-export default () => <LoginComponent Extra={Extra} onSubmit={onSubmit} />;
+export default () => (
+  <div className="flex flex-col h-screen justify-between">
+    <main className="mb-auto h-10 bg-green-500">
+      <LoginComponent Extra={Extra} onSubmit={onSubmit} />
+    </main>
+    <footer className="h-8 p-1">{version}</footer>
+  </div>
+);
