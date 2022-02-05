@@ -1,5 +1,5 @@
 import React from "./_snowpack/pkg/react.js";
-import {Route, Switch, BrowserRouter as Router} from "./_snowpack/pkg/react-router-dom.js";
+import {Route, Switch, BrowserRouter, Redirect} from "./_snowpack/pkg/react-router-dom.js";
 import Home from "./components/home/index.js";
 import Layout from "./layout/index.js";
 import Login from "./components/login/index.js";
@@ -15,10 +15,17 @@ const AppRouter = () => {
     component: NotFound
   })));
 };
-export default () => /* @__PURE__ */ React.createElement(Router, {
+export default () => /* @__PURE__ */ React.createElement(BrowserRouter, {
   basename
 }, /* @__PURE__ */ React.createElement(Switch, null, /* @__PURE__ */ React.createElement(Route, {
   exact: true,
   path: links.login.link,
   component: Login
-}), /* @__PURE__ */ React.createElement(AppRouter, null)));
+}), /* @__PURE__ */ React.createElement(Route, {
+  path: "/app",
+  component: AppRouter
+}), /* @__PURE__ */ React.createElement(Route, {
+  component: () => /* @__PURE__ */ React.createElement(Redirect, {
+    to: links.login.link
+  })
+})));
