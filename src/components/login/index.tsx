@@ -1,6 +1,8 @@
 import React from "react";
 
-import Login from "../../common/login";
+import LoginComponent, { Login } from "../../common/login";
+import { withBackend } from "../../config";
+import { linksApp } from "../../links";
 
 const Extra = () => (
   <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
@@ -8,10 +10,23 @@ const Extra = () => (
   </h2>
 );
 
-const onSubmit = async () => {
+const onSubmit = async (login: Login) => {
+  if (withBackend) {
+    const body = JSON.stringify(login);
+    const r = await fetch("/api/login", {
+      method: "POST",
+      body,
+      headers: { "content-type": "application/json" },
+    });
+
+    console.log(r);
+
+    return { redirectUrl: linksApp.home.link };
+  }
+
   console.log(1);
   await new Promise((resolve) => setTimeout(resolve, 1.5 * 1000)); // wait a bit
-  return { redirectUrl: "/home" };
+  return { redirectUrl: linksApp.home.link };
 };
 
-export default () => <Login Extra={Extra} onSubmit={onSubmit} />;
+export default () => <LoginComponent Extra={Extra} onSubmit={onSubmit} />;

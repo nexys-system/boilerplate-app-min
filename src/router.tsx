@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 import Home from "./components/home";
 
 import Layout from "./layout";
@@ -28,10 +28,11 @@ const AppRouter = () => {
 };
 
 export default () => (
-  <Router basename={basename}>
+  <BrowserRouter basename={basename}>
     <Switch>
       <Route exact path={links.login.link} component={Login} />
-      <AppRouter />
+      <Route path="/app" component={AppRouter} />
+      <Route component={() => <Redirect to={links.login.link} />} />
     </Switch>
-  </Router>
+  </BrowserRouter>
 );

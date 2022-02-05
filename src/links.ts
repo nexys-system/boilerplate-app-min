@@ -3,7 +3,7 @@ export const links = {
 };
 
 export const linksApp = {
-  home: { name: "Home", link: "/home" },
+  home: { name: "Home", link: "/app/home" },
 };
 
 export const menus: { name: string; link: string }[] = Object.values(linksApp);

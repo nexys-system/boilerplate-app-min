@@ -4,7 +4,7 @@ import { LockClosedIcon } from "@heroicons/react/solid";
 import * as V from "@nexys/validation";
 import Spinner from "../spinner/circle";
 
-interface Login {
+export interface Login {
   email: string;
   password: string;
 }
