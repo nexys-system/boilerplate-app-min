@@ -1,9 +1,9 @@
 name: Deploy
 
 on:
-  push:
-    tags:
-      - v*
+  push: 
+  # this is because this repo is a template. upon creating a new repo this CI must be not triggered, it is just meant for the template itself
+    branches-ignore: master
 
 jobs:
   build:
