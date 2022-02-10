@@ -13,11 +13,13 @@ const Extra = () => (
 const onSubmit = async (login: Login) => {
   if (withBackend) {
     const body = JSON.stringify(login);
-    const r = await fetch("/api/login", {
+    const r = await fetch("/api/auth/login", {
       method: "POST",
       body,
       headers: { "content-type": "application/json" },
     });
+    
+    // todo handle errors
 
     console.log(r);
 
