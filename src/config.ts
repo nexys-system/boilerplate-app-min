@@ -9,4 +9,4 @@ const ghUrl = "https://github.com/nexys-system/boilerplate-app-min";
 export const github = { sha: `${ghUrl}/commit/${sha}`, url: ghUrl };
 
 export const withBackend: boolean =
-  import.meta.env.SNOWPACK_WITH_BACKEND === "true" || false;
+  import.meta.env.SNOWPACK_PUBLIC_WITH_BACKEND === "true" || false;
