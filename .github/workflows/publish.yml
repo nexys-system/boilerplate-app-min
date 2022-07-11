@@ -21,6 +21,6 @@ jobs:
         run: SNOWPACK_PUBLIC_WITH_BACKEND=true SNOWPACK_PUBLIC_URL= SNOWPACK_PUBLIC_GIT_SHA=$GITHUB_SHA SNOWPACK_PUBLIC_VERSION=${GITHUB_REF##*/} yarn buildAll
       - name: Publish package
         run: |
-          echo "registry=https://npm.pkg.github.com/@nexys-system" >> .npmrc 
+          echo "registry=https://npm.pkg.github.com/" >> .npmrc 
           cat .npmrc
           NODE_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }} npm publish
