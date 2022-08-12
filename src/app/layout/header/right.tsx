@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { BellIcon, UserCircleIcon } from "@heroicons/react/outline";
 import { classNames } from "./utils";
-import links from "../../links";
+import links from "../../../links";
 
 export default () => (
   <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">

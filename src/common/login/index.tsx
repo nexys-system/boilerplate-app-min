@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { LockClosedIcon } from "@heroicons/react/solid";
 import * as V from "@nexys/validation";
 import Spinner from "../spinner/circle";
@@ -59,7 +59,7 @@ export default ({
   };
 
   if (redirectUrl) {
-    return <Redirect to={redirectUrl} />;
+    return <Navigate to={redirectUrl} />;
   }
 
   const classInput = errors
