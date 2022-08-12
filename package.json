@@ -10,7 +10,7 @@
     "start": "vite dev",
     "buildAll": "yarn css; yarn build",
     "build": "vite build",
-    "test": "jest",
+    "test": "vitest",
     "css": "tailwindcss -o public/main.css"
   },
   "devDependencies": {
