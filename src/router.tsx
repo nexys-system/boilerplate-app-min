@@ -1,38 +1,18 @@
 import React from "react";
-import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
-import Home from "./components/home";
+import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 
-import Layout from "./layout";
-
-import Login from "./components/login";
-
+import { links } from "./links";
 import { basename } from "./config";
 
-import { links, linksApp } from "./links";
-
-const NotFound = () => (
-  <p>
-    <i>Page Not Found</i>
-  </p>
-);
-
-const AppRouter = () => {
-  return (
-    <Layout>
-      <Switch>
-        <Route exact path={linksApp.home.link} component={Home} />
-        <Route component={NotFound} />
-      </Switch>
-    </Layout>
-  );
-};
+import Login from "./public/login";
+import AppRouter from "./app";
 
 export default () => (
   <BrowserRouter basename={basename}>
-    <Switch>
-      <Route exact path={links.login.link} component={Login} />
-      <Route path="/app" component={AppRouter} />
-      <Route component={() => <Redirect to={links.login.link} />} />
-    </Switch>
+    <Routes>
+      <Route path={links.login.link} element={<Login />} />
+      <Route path="/app/*" element={<AppRouter />} />
+      <Route path={"/*"} element={<Navigate to={links.login.link} />} />
+    </Routes>
   </BrowserRouter>
 );

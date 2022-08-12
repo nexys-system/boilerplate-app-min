@@ -6,7 +6,7 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { classNames } from "./utils";
 
 import Right from "./right";
-import { menus, linksApp } from "../../links";
+import { menus, linksApp } from "../../../links";
 
 const navigation = menus.map((menu) => {
   return { name: menu.name, href: menu.link, current: false };
