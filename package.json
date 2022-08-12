@@ -11,7 +11,7 @@
     "buildAll": "yarn css; yarn build",
     "build": "vite build",
     "test": "vitest",
-    "css": "tailwindcss -o public/main.css"
+    "css": "tailwindcss -o public/assets/main.css"
   },
   "devDependencies": {
     "@headlessui/react": "^1.4.0",
