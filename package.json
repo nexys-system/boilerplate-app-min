@@ -1,6 +1,6 @@
 {
   "name": "@nexys-system/boilerplate-app-min",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "main": "index.js",
   "files": [
     "README.md",
