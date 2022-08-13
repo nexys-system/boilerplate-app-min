@@ -1,11 +1,33 @@
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 
+// remote proxy
+const proxyRemote = {
+  "^/api/.*": {
+    target: "https://tt4.nexys.io",
+    changeOrigin: true,
+    secure: true,
+  },
+};
+
+const proxyLocal = {
+  "^/api/.*": {
+    target: "http://127.0.0.1:3001",
+    changeOrigin: true,
+    secure: false,
+    rewrite: (path: string) => path.replace(/^\/apicore/, ""),
+  },
+};
+
 // this the default/base configuration
 const baseConfig = {
   plugins: [react()],
   test: {
     // ...
+  },
+  server: {
+    port: 8080,
+    proxy: proxyLocal,
   },
 };
 
