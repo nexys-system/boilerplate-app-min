@@ -3,11 +3,7 @@ import { Navigate } from "react-router-dom";
 import { LockClosedIcon } from "@heroicons/react/solid";
 import * as V from "@nexys/validation";
 import Spinner from "../spinner/circle";
-
-export interface Login {
-  email: string;
-  password: string;
-}
+import { Login } from "../../interface/auth";
 
 const loginShape: V.Type.Shape = {
   email: { extraCheck: V.Utils.emailCheck },
@@ -52,10 +48,13 @@ export default ({
     }
 
     setLoading(true);
-    onSubmit(login as Login).then((x) => {
-      setRedirectUrl(x.redirectUrl);
-    });
-    return;
+    onSubmit(login as Login)
+      .then((x) => {
+        setRedirectUrl(x.redirectUrl);
+      })
+      .catch((e) => {
+        setLoading(false);
+      });
   };
 
   if (redirectUrl) {

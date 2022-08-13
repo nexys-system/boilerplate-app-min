@@ -1,8 +1,10 @@
 import React from "react";
 
-import LoginComponent, { Login } from "../../common/login";
-import { version, withBackend } from "../../config";
+import LoginComponent from "../../common/login";
 import { linksApp } from "../../links";
+import { Login, onLogin } from "../../interface/auth";
+
+import Layout from "./layout";
 
 const Extra = () => (
   <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
@@ -10,32 +12,17 @@ const Extra = () => (
   </h2>
 );
 
-const onSubmit = async (login: Login) => {
-  if (withBackend) {
-    const body = JSON.stringify(login);
-    const r = await fetch("/api/auth/login", {
-      method: "POST",
-      body,
-      headers: { "content-type": "application/json" },
+const onSubmit = async (login: Login) =>
+  onLogin(login)
+    .then(() => {
+      return { redirectUrl: linksApp.home.link };
+    })
+    .catch((e) => {
+      return Promise.reject("could not login");
     });
-    
-    // todo handle errors
-
-    console.log(r);
-
-    return { redirectUrl: linksApp.home.link };
-  }
-
-  console.log(1);
-  await new Promise((resolve) => setTimeout(resolve, 1.5 * 1000)); // wait a bit
-  return { redirectUrl: linksApp.home.link };
-};
 
 export default () => (
-  <div className="flex flex-col h-screen justify-between">
-    <main className="mb-auto h-10 bg-green-500">
-      <LoginComponent Extra={Extra} onSubmit={onSubmit} />
-    </main>
-    <footer className="h-8 p-1">{version}</footer>
-  </div>
+  <Layout>
+    <LoginComponent Extra={Extra} onSubmit={onSubmit} />
+  </Layout>
 );
