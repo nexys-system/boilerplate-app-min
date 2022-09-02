@@ -1,6 +1,6 @@
 {
   "name": "@nexys-system/boilerplate-app-min",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "main": "index.js",
   "files": [
     "README.md",
@@ -8,8 +8,8 @@
   ],
   "scripts": {
     "start": "vite dev",
-    "buildAll": "yarn css; yarn build",
-    "build": "tsc && vite build",
+    "build": "yarn css; yarn buildpre",
+    "prebuild": "tsc && vite build",
     "test": "vitest",
     "css": "tailwindcss -o public/assets/main.css"
   },
