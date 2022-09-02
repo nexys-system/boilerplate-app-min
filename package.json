@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "start": "vite dev",
-    "build": "yarn css; yarn buildpre",
+    "build": "yarn css; yarn prebuild",
     "prebuild": "tsc && vite build",
     "test": "vitest",
     "css": "tailwindcss -o public/assets/main.css"
